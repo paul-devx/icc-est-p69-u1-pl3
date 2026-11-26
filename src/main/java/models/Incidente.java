@@ -53,7 +53,6 @@ public class Incidente implements Comparable<Incidente> {
         Comparator<Incidente> comparador = Comparator.comparingInt(Incidente::getSeveridad)
             .thenComparingInt(Incidente::getMinutosRestantes)
             .thenComparing(incidente -> incidente.getServicios().size(),Comparator.reverseOrder())
-            //.thenComparing(incidente -> incidente.getServicios().stream().mapToLong(ServicioAfectado::usuariosAfectados).sum(),Comparator.reverseOrder())
             .thenComparing(incidente -> {long totalUsuarios = 0;
                 for (ServicioAfectado servicio : incidente.getServicios()) {
                     totalUsuarios += servicio.usuariosAfectados();
@@ -62,7 +61,6 @@ public class Incidente implements Comparable<Incidente> {
             .thenComparing(Incidente::getRegistradoEn)
             .thenComparing(Incidente::getCodigo, String.CASE_INSENSITIVE_ORDER);
         return comparador.compare(this, otro);
-        //throw new UnsupportedOperationException("C: compareTo pendiente");
     }
 
     @Override

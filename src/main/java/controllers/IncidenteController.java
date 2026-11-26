@@ -12,6 +12,9 @@ public class IncidenteController {
 
     public int busquedaBinaria(List<Incidente> incidentes, Incidente objetivo) {
         // TODO B: implementar búsqueda binaria utilizando compareTo.
+        if (incidentes== null || objetivo == null) {
+            throw new NullPointerException();
+        }
         int inicio = 0;
         int fin = incidentes.size() - 1;
         while (inicio <= fin) {
